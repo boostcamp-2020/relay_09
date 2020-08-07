@@ -20,12 +20,12 @@ const server = http.createServer(chat);
 /* 생성된 서버를 socket.io에 바인딩 */
 const io = socket(server);
 
-chat.use("/css", express.static("./static/css"));
-chat.use("/js", express.static("./static/js"));
+chat.use("/css", express.static("../static/css"));
+chat.use("/js", express.static("../static/js"));
 
 /* Get 방식으로 / 경로에 접속하면 실행 됨 */
 chat.get("/", function (request, response) {
-  fs.readFile("./static/index.html", function (err, data) {
+  fs.readFile("../static/index.html", function (err, data) {
     if (err) {
       response.send("에러");
     } else {
