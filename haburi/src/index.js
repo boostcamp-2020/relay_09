@@ -17,7 +17,6 @@ ReactDOM.render(
     <LoginPage />
     <Tab />
     <Card />
-    <Pagenation />
   </React.StrictMode>,
   document.getElementById("root")
 );
