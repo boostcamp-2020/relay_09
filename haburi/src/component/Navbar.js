@@ -13,6 +13,7 @@ import {
   DropdownItem,
   NavbarText,
 } from "reactstrap";
+import "./nav.css";
 
 const MyNav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,31 +23,10 @@ const MyNav = (props) => {
   return (
     <div>
       <Navbar color="primary" light expand="md">
-        <NavbarBrand href="/">하부리</NavbarBrand>
+        <NavbarBrand href="/" id="navItem"><b>💙하부리💙</b></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            {/* <NavItem>
-              <form action="/hms/accommodations" method="GET">
-                <div class="row">
-                  <div class="">
-                    <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Search"
-                        id="txtSearch"
-                      />
-                      <div class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">
-                          <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </NavItem> */}
             <NavItem>
               <NavLink href="/components/">Components</NavLink>
             </NavItem>
@@ -58,14 +38,14 @@ const MyNav = (props) => {
                 Options
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>하부리란?</DropdownItem>
+                <DropdownItem>하부리 기능</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Reset</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Latta is horse</NavbarText>
+          <NavbarText id="navItem">Latta is horse</NavbarText>
         </Collapse>
       </Navbar>
     </div>

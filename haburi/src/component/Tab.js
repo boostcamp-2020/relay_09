@@ -31,7 +31,7 @@ const Tab = (props) => {
               toggle("1");
             }}
           >
-            Best
+            ✨ Best
           </NavLink>
         </NavItem>
         <NavItem>
@@ -41,7 +41,7 @@ const Tab = (props) => {
               toggle("2");
             }}
           >
-            월 랭킹
+            👍 월 랭킹
           </NavLink>
         </NavItem>
         <NavItem>
@@ -51,7 +51,7 @@ const Tab = (props) => {
               toggle("3");
             }}
           >
-            맞춤영상
+            💕 맞춤영상
           </NavLink>
         </NavItem>
         <NavItem>
@@ -61,7 +61,7 @@ const Tab = (props) => {
               toggle("4");
             }}
           >
-            etc
+           🎁 etc
           </NavLink>
         </NavItem>
       </Nav>
@@ -69,12 +69,35 @@ const Tab = (props) => {
         <TabPane tabId="1">
           <Row>
             <Col sm="12">
-              <h4>Tab 1 Contents</h4>
+              <br/>
+              <h6>Best Video 👏</h6>
+            </Col>
+            <Col sm="6">
+              <div class="card">
+                <div class="embed-responsive embed-responsive-4by3">
+                  <video  controls autoplay loop class="embed-responsive-item" >
+                  <source src="https://youtu.be/uILTpGsOF4w"></source>
+                  </video>
+                </div>
+              </div>
+            </Col>
+            <Col sm="6">
+              <div class="card">
+                <div class="embed-responsive embed-responsive-4by3">
+                  <video  controls autoplay loop class="embed-responsive-item" >
+                  <source src="https://youtu.be/uILTpGsOF4w"></source>
+                  </video>
+                </div>
+              </div>
             </Col>
           </Row>
         </TabPane>
         <TabPane tabId="2">
           <Row>
+            <Col sm="12">
+              <br/>
+              <h6> Monthly ranking 👏</h6>
+            </Col>
             <Col sm="6">
               <Card body>
                 <CardTitle>Special Title Treatment</CardTitle>
@@ -99,16 +122,18 @@ const Tab = (props) => {
         </TabPane>
         <TabPane tabId="3">
           <Row>
-            <Col sm="12">
-              <h4>Tab 3 Contents</h4>
-            </Col>
+          <Col sm="12">
+              <br/>
+              <h6> Custom video 👏</h6>
+          </Col>
           </Row>
         </TabPane>
         <TabPane tabId="4">
           <Row>
-            <Col sm="12">
-              <h4>Tab 4 Contents</h4>
-            </Col>
+          <Col sm="12">
+              <br/>
+              <h6> etc 👏</h6>
+          </Col>
           </Row>
         </TabPane>
       </TabContent>
