@@ -23,6 +23,7 @@ const io = socket(server);
 chat.use("/css", express.static("../static/css"));
 chat.use("/js", express.static("../static/js"));
 
+
 /* Get 방식으로 / 경로에 접속하면 실행 됨 */
 chat.get("/", function (request, response) {
   fs.readFile("../static/index.html", function (err, data) {
@@ -52,12 +53,13 @@ io.sockets.on("connection", function (socket) {
     });
   });
 
+
   /* 전송한 메시지 받기 */
   socket.on("message", function (data) {
     /* 받은 데이터에 누가 보냈는지 이름을 추가 */
     data.name = socket.name;
 
-    console.log(data);
+    console.log(data,'비');
 
     /* 보낸 사람을 제외한 나머지 유저에게 메시지 전송 */
     socket.broadcast.emit("update", data);
