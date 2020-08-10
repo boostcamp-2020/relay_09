@@ -1,4 +1,44 @@
-let socket = io()
+let socket = io();
+
+/* 감정분석을 위한 feels배열 */
+const feels = [];
+
+const host = '27.96.131.55'
+const port = 1024;
+
+//host에 접근하여 감정분석 결과를 반환
+function getFeeling(feeling,message){
+  console.log(`http://${host}:${port}/nlp/${message}`);
+
+
+  axios.get(`http://${host}:${port}/nlp/${encodeURI(message)}`,{ crossdomain: true }).then(result => {
+    console.log(result);
+    feels.push(result.data.result);
+         if(feels.length > 2){
+           changeFeeling(feeling);
+         }
+  }).catch(e => console.log(e));
+  
+}
+
+function changeFeeling(feeling){
+  console.log("감정분석 결과 적용");
+  console
+  feel= 0;
+  for(let i=0;i<feels.length;i++){
+    if(feels[i] == 'positive'){
+      feel+=1
+    }else if(feels[i] == 'negative'){
+      feel-=1;
+    }
+  }
+  console.log(feel);
+  console.log(feeling);
+  if(feel>0) feeling.innerHTML = '긍정';
+  else if(feel<0) feeling.innerHTML = '부정';
+  else feeling.innerHTML = '평범';
+
+}
 
 /* 접속 되었을 때 실행 */
 socket.on('connect', function() {
@@ -17,7 +57,6 @@ socket.on('connect', function() {
 /* 서버로부터 데이터 받은 경우 */
 socket.on('update', function(data) {
   let chat = document.getElementById('chat')
-
   let message = document.createElement('div')
   let node = document.createTextNode(`${data.name}: ${data.message}`)
   let className = ''
@@ -60,4 +99,6 @@ function send() {
 
   // 서버로 message 이벤트 전달 + 데이터와 함께
   socket.emit('message', {type: 'message', message: message})
+  let feeling = document.querySelector('.feeling');
+  getFeeling(feeling,message);
 }
