@@ -1,24 +1,25 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080"; //port번호 입력
+const URL = "http://49.50.160.6:8080";
 
-export const videoFilterAPI = async (videoNum) => {
-  try {
-    const response = await axios.post(`${URL}/videolist`, {
-      videoUrl: videoNum,
+export const postReport = (params) => {
+  axios
+    .post(`${URL}/reportvideo`, { videoUrl: params })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
     });
-    return response;
-  } catch (error) {
-    return { error };
-  }
 };
 
-export const loadVideoAPI = async ({}) => {
-  try {
-    const response = await axios.get(`${URL}/reportvideo`);
-    console.log(response);
-    return response;
-  } catch (error) {
-    return { error };
-  }
+export const getVideolist = () => {
+  return axios
+    .get(`${URL}/videolist`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
 };
