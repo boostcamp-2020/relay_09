@@ -4,6 +4,8 @@ const express = require('express') // 서버를 위한 모듈
 /* 설치한 socket.io 모듈 불러오기 */
 const socket = require('socket.io') // 실시간 통신을 위한 모듈
 
+const bodyParser = require('body-parser')
+
 /* Node.js 기본 내장 모듈 불러오기 */
 const http = require('http')
 
@@ -20,8 +22,40 @@ const server = http.createServer(app)
 /* 생성된 서버를 socket.io에 바인딩 */
 const io = socket(server)
 
+app.use(bodyParser.json())
+
 app.use('/css', express.static('./static/css'))
 app.use('/js', express.static('./static/js'))
+
+app.get('/videolist', function(req, res) {
+  const dataBuffer = fs.readFileSync('./static/database/video.json')
+  const dataJson = dataBuffer.toString()
+  const videolist = JSON.parse(dataJson)
+
+  res.send(videolist.data)
+})
+
+app.post('/reportvideo', function(req, res) {
+  let test = req.body.url
+  
+  var sightengine = require('sightengine')('1286476915', 'jhNZRwJE8VdmD27GquKM');
+
+  sightengine.check(['nudity']).video_sync(test).then(function(result) {
+    // read the output (result)
+    let data = result.data.frames
+    for (let i=0; i<data.length; i++){
+        let obj_length = Object.keys(data[i].nudity).length
+        if(data[i].nudity.raw > 0.6 || data[i].nudity.partial > 0.6 || obj_length === 4){
+            res.send({ isBlock : true})
+        }
+    }
+
+    res.send({ isBlock : false})
+
+  }).catch(function(err) {
+    console.log(err)
+  })
+})
 
 /* Get 방식으로 / 경로에 접속하면 실행 됨 */
 app.get('/', function(request, response) {
