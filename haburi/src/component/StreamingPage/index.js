@@ -1,12 +1,29 @@
 import React from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import MyNav from "../MyNav";
 
 const StreamingPage = () => {
+  let history = useHistory();
+
+  const { videoNum } = useParams();
+  const videoList = useSelector((state) => state.video.videoList);
+
   return (
-    <div>
-      <video controls autoplay loop class="embed-responsive-item">
-        <source src="https://youtu.be/uILTpGsOF4w"></source>
-      </video>
-    </div>
+    <>
+      <MyNav />
+      {videoList.length ? (
+        <div>
+          <video controls width="500">
+            <source src={videoList[videoNum].video} />
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+        </div>
+      ) : (
+        history.push(`/components`)
+      )}
+    </>
   );
 };
 
