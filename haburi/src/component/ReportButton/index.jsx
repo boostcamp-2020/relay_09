@@ -1,7 +1,7 @@
 import React from "react";
-import { videoFilterAPI } from "../../util/api";
+import { postReport } from "../../util/api";
 
-function ReportButton({ videoNum }) {
+function ReportButton({ videoUrl }) {
   const resultAlert = (response) => {
     return new Promise((resolve, rejects) => {
       if (response.error) {
@@ -16,15 +16,13 @@ function ReportButton({ videoNum }) {
   const selectFilter = async (e) => {
     e.preventDefault();
     alert("신고가 접수되었습니다.");
-    const response = await videoFilterAPI(videoNum);
+    const response = await postReport(videoUrl);
     await resultAlert(response);
   };
 
   return (
-    <form>
-      <button className="Filetr" onClick={selectFilter}>
-        신고하기
-      </button>
+    <form className="wrapper">
+      <button onClick={selectFilter}>신고하기</button>
     </form>
   );
 }
