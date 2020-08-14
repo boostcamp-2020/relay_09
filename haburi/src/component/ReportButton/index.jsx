@@ -1,5 +1,5 @@
 import React from 'react';
-import { videoFilterAPI } from '../../api';
+import { videoFilterAPI } from '../../util/api';
 
 function ReportButton({videoNum}) {
 
