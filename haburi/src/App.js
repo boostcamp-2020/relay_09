@@ -1,16 +1,17 @@
 import React from "react";
-import LoginPage from "./component/LoginPage";
-import Card from "./component/card";
-import MyNav from "./component/MyNav";
-import Tab from "./component/Tab";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MainPage from "./component/MainPage";
+import ErrorPage from "./component/ErrorPage";
 
 function App() {
   return (
     <div className="App">
-      <MyNav />
-      <LoginPage />
-      <Tab />
-      <Card />
+      <Router>
+        <Switch>
+          <Route path="/components" exact component={MainPage} />
+          <Route component={ErrorPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }
