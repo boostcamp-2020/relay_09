@@ -30,7 +30,7 @@ const Tab = (props) => {
     videoList &&
     videoList.map((video, index) => (
       <Col sm="6" style={{ maxWidth: "30%", minHeight: "200px", paddingBottom: "30px" }}>
-        <div class="card" style={{ height: "100%" }}>
+        <div className="card" style={{ height: "100%" }}>
           <VideoThumbnail key={index} video={video}></VideoThumbnail>
         </div>
       </Col>

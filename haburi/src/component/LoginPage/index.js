@@ -4,29 +4,29 @@ import "./index.css";
 class LoginPage extends Component {
   render() {
     return (
-      <div class="wrapper fadeInDown">
+      <div className="wrapper fadeInDown">
         <br />
         <div id="formContent">
-          <div class="card">
-            <article class="card-body">
-              <a href="" class="float-right btn btn-outline-primary">
+          <div className="card">
+            <article className="card-body">
+              <a href="" className="float-right btn btn-outline-primary">
                 Sign up
               </a>
-              <h4 class="card-title mb-4 mt-1">Sign in</h4>
+              <h4 className="card-title mb-4 mt-1">Sign in</h4>
               <form>
-                <div class="form-group">
+                <div className="form-group">
                   <label>Your username</label>
-                  <input name="" class="form-control" placeholder="username" type="username"></input>
+                  <input name="" className="form-control" placeholder="username" type="username"></input>
                 </div>
-                <div class="form-group">
-                  <a class="float-right" href="#">
+                <div className="form-group">
+                  <a className="float-right" href="#">
                     Forgot?
                   </a>
                   <label>Your password</label>
-                  <input class="form-control" placeholder="******" type="password"></input>
+                  <input className="form-control" placeholder="******" type="password"></input>
                 </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">
+                <div className="form-group">
+                  <button type="submit" className="btn btn-primary btn-block">
                     {" "}
                     Login{" "}
                   </button>
