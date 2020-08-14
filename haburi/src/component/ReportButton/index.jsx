@@ -1,12 +1,11 @@
 import React from 'react';
 import { videoFilterAPI } from '../../util/api';
-
+import './ReportButton.css';
 function ReportButton({videoNum}) {
 
   const resultAlert = (response) =>{
     return new Promise((resolve,rejects)=>{
       if (response.error) {
-        setWarning('');
       }
       else {
         if(response.result)
@@ -26,9 +25,9 @@ function ReportButton({videoNum}) {
   }
 
   return(
-    <form>
-      <button className="Filetr" onClick={selectFilter}>신고하기</button>
-    </form>
+    <form className = "wrapper">
+      <button onClick={selectFilter}>신고하기</button>
+    </form> 
   )
 }
 
