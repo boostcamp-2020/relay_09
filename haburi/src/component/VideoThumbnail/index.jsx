@@ -6,7 +6,7 @@ const VideoThumbnail = ({ video }) => {
   let history = useHistory();
 
   const onPassVideo = () => {
-    if (video.isBlock) {
+    if (video.isBlock === "true") {
       alert("블락된 영상입니다. ");
       return;
     }
