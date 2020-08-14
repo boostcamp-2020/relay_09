@@ -5,7 +5,7 @@ fetch('http://localhost:8080/reportvideo', {
         'Accept': 'application/json'
     },
     method: "POST",
-    body: JSON.stringify({id:"1234"})
+    body: JSON.stringify({url:"https://ssh1997.github.io/test/test3.mp4"})
 })
 .then(res => res.json())
 .then(json => console.log(json));

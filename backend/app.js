@@ -35,51 +35,26 @@ app.get('/videolist', function(req, res) {
   res.send(videolist.data)
 })
 
-var sightengine = require('sightengine')('{{api_key}}', '{{secret_key}}');
+app.post('/reportvideo', function(req, res) {
+  let test = req.body.url
+  
+  var sightengine = require('sightengine')('1286476915', 'jhNZRwJE8VdmD27GquKM');
 
-sightengine.check(['nudity']).video_sync('https://ssh1997.github.io/test/test4.mp4').then(function(result) {
-  // read the output (result)
+  sightengine.check(['nudity']).video_sync(test).then(function(result) {
+    // read the output (result)
     let data = result.data.frames
     for (let i=0; i<data.length; i++){
         let obj_length = Object.keys(data[i].nudity).length
         if(data[i].nudity.raw > 0.6 || data[i].nudity.partial > 0.6 || obj_length === 4){
-            console.log("true")
-            return true
+            res.send({ isBlock : true})
         }
     }
-    console.log("false")
-    return false
-}).catch(function(err) {
-  // handle the error
-});
 
-app.post('/reportvideo', function(req, res) {
-  const fetch = require('node-fetch');
-  fetch('http://localhost:8080/videotest', {
-      headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify({id:"1234"})
+    res.send({ isBlock : false})
+
+  }).catch(function(err) {
+    console.log(err)
   })
-  .then(res => res.json())
-  .then((json) => {
-    if (json.isBlock) {
-      // 참일경우
-    } else {
-      // 아닐경우
-    }
-  });
-})
-
-app.post('/videotest', function(req, res) {
-  console.log(req.body)
-  if (req.body.id === '1234') {
-    res.send({ isBlock : true })
-  } else {
-    res.send({ isBlock : false })
-  }
 })
 
 /* Get 방식으로 / 경로에 접속하면 실행 됨 */
