@@ -16,7 +16,7 @@ const StreamingPage = () => {
       {videoList.length ? (
         <div>
           <video controls width="500">
-            <source src={videoList[videoNum].video} />
+            <source src={videoList.filter((v) => v.id === videoNum)[0].video} />
             Sorry, your browser doesn't support embedded videos.
           </video>
         </div>
