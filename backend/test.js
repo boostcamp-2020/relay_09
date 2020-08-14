@@ -5,7 +5,7 @@ fetch('http://localhost:8080/reportvideo', {
         'Accept': 'application/json'
     },
     method: "POST",
-    body: JSON.stringify({url:"https://ssh1997.github.io/test/test3.mp4"})
+    body: JSON.stringify({url:"https://storage.coverr.co/videos/FvKt02GwvrkOUI7UKv4NePv1WR6Xc4JaV/preview?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjExNDMyN0NEOTRCMUFCMTFERTE3IiwiaWF0IjoxNTk3MzkwMzIzfQ.OanUSu01KXDO2U2VgUzQsH5mX7ie7PDasb2pVAh1LPU"})
 })
 .then(res => res.json())
 .then(json => console.log(json));
