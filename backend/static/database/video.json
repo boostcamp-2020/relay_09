@@ -1,0 +1,12 @@
+{
+    "title" : "videoList",
+    "data" : [
+        {
+            "id" : "1",
+            "title" : "video1",
+            "thumbnail": "imgLink",
+            "video" : "https://ssh1997.github.io/test/test4.mp4",
+            "isBlock" : "false"
+        }
+    ]
+}
