@@ -16,7 +16,25 @@ const VideoThumbnail = ({ video }) => {
   return (
     <>
       <Wrapper onClick={onPassVideo}>
-        <ThumbnailImage src={video.thumbnail} alt="" />
+        {video.thumbnail === "imgLink" ? (
+          video.isBlock === "true" ? (
+            <ThumbnailImage
+              src={
+                "https://user-images.githubusercontent.com/45891045/90220944-2b128d80-de44-11ea-9e68-bb5695d193ee.png"
+              }
+              alt="썸네일 이미지 - block"
+            />
+          ) : (
+            <ThumbnailImage
+              src={
+                "https://user-images.githubusercontent.com/45891045/90224873-52b92400-de4b-11ea-87c6-eaefd111977b.png"
+              }
+              alt="썸네일 이미지"
+            />
+          )
+        ) : (
+          <ThumbnailImage src={video.thumbnail} alt="썸네일 이미지" />
+        )}
         <Title>{video.title}</Title>
       </Wrapper>
     </>
