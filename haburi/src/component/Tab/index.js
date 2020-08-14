@@ -1,19 +1,47 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from "reactstrap";
 import classnames from "classnames";
-import { useHistory } from "react-router-dom";
+
+import VideoThumbnail from "../VideoThumbnail";
+import { saveVideo } from "../../modules/video";
 
 const Tab = (props) => {
-  let history = useHistory();
+  const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("1");
-
-  const passVideo = () => {
-    history.push(`/streamingPage`);
-  };
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  const list = [
+    {
+      id: 0,
+      title: "동영상0",
+      thumbnail: "https://user-images.githubusercontent.com/45891045/90220944-2b128d80-de44-11ea-9e68-bb5695d193ee.png",
+      video: "https://sightengine.com/assets/stream/examples/compilation.mp4",
+      isBlock: false,
+    },
+    {
+      id: 1,
+      title: "동영상1",
+      thumbnail: "https://user-images.githubusercontent.com/45891045/90224873-52b92400-de4b-11ea-87c6-eaefd111977b.png",
+      video: "http://video.mrporter.com/videos/productPage/173037_detail.mp4",
+      isBlock: false,
+    },
+  ];
+  dispatch(saveVideo(list));
+
+  const VideoList = list.map((video, index) => (
+    <Col sm="6">
+      <div class="card">
+        <div class="embed-responsive embed-responsive-4by3">
+          <VideoThumbnail key={index} video={video}></VideoThumbnail>
+        </div>
+      </div>
+    </Col>
+  ));
 
   return (
     <div>
@@ -66,22 +94,7 @@ const Tab = (props) => {
               <br />
               <h6>Best Video 👏</h6>
             </Col>
-            <Col sm="6">
-              <div class="card">
-                <div class="embed-responsive embed-responsive-4by3">
-                  <div onClick={passVideo}>동영상1</div>
-                </div>
-              </div>
-            </Col>
-            <Col sm="6">
-              <div class="card">
-                <div class="embed-responsive embed-responsive-4by3">
-                  <video controls autoplay loop class="embed-responsive-item">
-                    <source src="https://youtu.be/uILTpGsOF4w"></source>
-                  </video>
-                </div>
-              </div>
-            </Col>
+            {VideoList}
           </Row>
         </TabPane>
         <TabPane tabId="2">

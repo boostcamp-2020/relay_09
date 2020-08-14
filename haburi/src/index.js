@@ -5,10 +5,18 @@ import Pagenation from "./component/Pagenation";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./modules";
+
+const store = createStore(rootReducer);
+
+window.store = store;
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
 
