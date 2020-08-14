@@ -1,47 +1,40 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from "reactstrap";
 import classnames from "classnames";
 
 import VideoThumbnail from "../VideoThumbnail";
 import { saveVideo } from "../../modules/video";
+import { getVideolist } from "../../util/api";
 
 const Tab = (props) => {
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("1");
+  const videoList = useSelector((state) => state.video.videoList);
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  const list = [
-    {
-      id: 0,
-      title: "동영상0",
-      thumbnail: "https://user-images.githubusercontent.com/45891045/90220944-2b128d80-de44-11ea-9e68-bb5695d193ee.png",
-      video: "https://sightengine.com/assets/stream/examples/compilation.mp4",
-      isBlock: false,
-    },
-    {
-      id: 1,
-      title: "동영상1",
-      thumbnail: "https://user-images.githubusercontent.com/45891045/90224873-52b92400-de4b-11ea-87c6-eaefd111977b.png",
-      video: "http://video.mrporter.com/videos/productPage/173037_detail.mp4",
-      isBlock: false,
-    },
-  ];
-  dispatch(saveVideo(list));
+  const getVideoList = async () => {
+    const data = await getVideolist();
+    dispatch(saveVideo(data));
+  };
 
-  const VideoList = list.map((video, index) => (
-    <Col sm="6">
-      <div class="card">
-        <div class="embed-responsive embed-responsive-4by3">
+  useEffect(() => {
+    getVideoList();
+  }, []);
+
+  const VideoList =
+    videoList &&
+    videoList.map((video, index) => (
+      <Col sm="6" style={{ maxWidth: "30%", minHeight: "200px", paddingBottom: "30px" }}>
+        <div className="card" style={{ height: "100%" }}>
           <VideoThumbnail key={index} video={video}></VideoThumbnail>
         </div>
-      </div>
-    </Col>
-  ));
+      </Col>
+    ));
 
   return (
     <div>
