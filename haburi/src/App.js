@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/components" exact component={MainPage} />
-          <Route path="/streamingPage" exact component={StreamingPage} />
+          <Route path="/streamingPage/:videoNum" exact component={StreamingPage} />
           <Route component={ErrorPage} />
         </Switch>
       </Router>
