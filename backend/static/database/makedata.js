@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const dataBuffer = fs.readFileSync('./datalink.txt');
-const datas = dataBuffer.toString().split('\n');
+const datas = dataBuffer.toString().split('\r\n');
 
 
 const data = {
