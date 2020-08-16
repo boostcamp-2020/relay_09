@@ -12,6 +12,35 @@ io.sockets.emit('이벤트명', 데이터)
 /* 나를 제외한 모든 소켓에게 데이터 전달*/
 socket.broadcast.emit('이벤트명', 데이터)
 ```
+# 3주차 백엔드
+## 백엔드 API
+​
+담당 : `J041_김석중` | `J082_박은식` | `J103_신승현`
+​
+### 비디오 리스트 가져오기
+```jsx
+GET "/videolist"
+// response video.json
+​
+// video.json
+[
+	{
+		"id": "number",
+		"title": "string",
+		"thumbnail": "url:string",
+		"video": "url:string",
+		"isBlock": "boolean"
+	},
+	...
+]
+```
+​
+### 신고들어온 비디오 판독하기
+```jsx
+POST "/reportvideo"
+// request video url:string
+// response true if the video is Harmful, or false
+```
 
 
 # 강좌
