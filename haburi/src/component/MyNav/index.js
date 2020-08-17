@@ -33,7 +33,7 @@ const MyNav = (props) => {
               <NavLink href="/components/">Components</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="http://localhost:8080/">Chat</NavLink>
+              <NavLink href="http://49.50.160.6:8080/">Chat</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
