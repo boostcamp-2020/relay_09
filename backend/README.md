@@ -41,6 +41,8 @@ POST "/reportvideo"
 // request video url:string
 // response true if the video is Harmful, or false
 ```
+<br>
+<br>
 
 ## 이미지 처리 API
 ​
@@ -62,13 +64,13 @@ Sightengine에서 지원하는 다양한 타입의 detection 중 **Nudity Detect
 ​
 * 사용방법
 ​
-```
-npm install sightengine --save
+```bash
+$ npm install sightengine --save
 ```
 ​
 * 요청 - 로직 코드
 ​
-```
+```js
 const sightengine = require('sightengine')('{public key}', '{secret key}');
 ​
 // input : video url
