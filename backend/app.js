@@ -38,7 +38,7 @@ app.get('/videolist', function (req, res) {
 app.post('/reportvideo', function (req, res) {
     let videoURL = req.body.videoURL
 
-    var sightengine = require('sightengine')('1286476915', 'jhNZRwJE8VdmD27GquKM');
+    var sightengine = require('sightengine')('1514919083', 'vHQ735wsS4nPrHYkyB2T');
 
     sightengine.check(['nudity']).video_sync(videoURL).then(function (result) {
         // read the output (result)
